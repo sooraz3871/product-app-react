@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
-import { AppBar, Toolbar, Typography, Container, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Container, Button, CircularProgress } from '@mui/material';
 import ProductList from "../../components/ProductList";
 import ProductFormDrawer from "../../components/ProductFormDrawer";
 import { ProductContext } from "../../contexts/ProductContext";
 
 function ListPage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { products, addProducts, removeProducts } = useContext(ProductContext);
+  const { products, addProducts, removeProducts,loading } = useContext(ProductContext);
+
+
 
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true);
@@ -29,7 +31,11 @@ function ListPage() {
 
   return (
     <div>
-      <AppBar position="static">
+      {loading ? (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
+            <CircularProgress />
+          </div>
+        ):(<><AppBar position="static">
         <Toolbar>
           <Typography variant="h6">Products List</Typography>
         </Toolbar>
@@ -53,6 +59,8 @@ function ListPage() {
           onSubmit={handleAddProduct}
         />
       </Container>
+      </>
+      )}
     </div>
   );
 }

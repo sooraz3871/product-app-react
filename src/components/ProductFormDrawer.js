@@ -21,7 +21,7 @@ const ProductFormDrawer = ({ open, onClose, onSubmit }) => {
       .required("Required")
       .positive("Price must be positive")
       .min(0.01, "Price must be at least $0.01"),
-    imageUrl: Yup.string().url("Invalid URL format"),
+    imageURL: Yup.string().url("Invalid URL format"),
   });
 
   const formik = useFormik({
@@ -29,7 +29,7 @@ const ProductFormDrawer = ({ open, onClose, onSubmit }) => {
       name: "",
       description: "",
       price: "",
-      imageUrl: "",
+      imageURL: "",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -113,13 +113,13 @@ const ProductFormDrawer = ({ open, onClose, onSubmit }) => {
           />
           <TextField
             fullWidth
-            id="imageUrl"
-            name="imageUrl"
+            id="imageURL"
+            name="imageURL"
             label="Image URL"
-            value={formik.values.imageUrl}
+            value={formik.values.imageURL}
             onChange={formik.handleChange}
-            error={formik.touched.imageUrl && Boolean(formik.errors.imageUrl)}
-            helperText={formik.touched.imageUrl && formik.errors.imageUrl}
+            error={formik.touched.imageURL && Boolean(formik.errors.imageURL)}
+            helperText={formik.touched.imageURL && formik.errors.imageURL}
             style={{ marginBottom: "1rem" }}
           />
           <Button

@@ -43,13 +43,13 @@ const ProductList = ({ products, onDeleteProduct }) => {
       ) : (
         <Grid container spacing={3}>
           {products.map((product) => (
-            <Grid item xs={12} sm={6} md={4} key={product.id}>
+            <Grid item xs={12} sm={6} md={4} key={product.productId}>
               <Card style={{ position: "relative" }}>
                 <CardContent style={{ paddingBottom: "48px" }}>
                   <Typography variant="h6">{product.name}</Typography>
-                  {product.imageUrl && (
+                  {product.imageURL && (
                     <img
-                      src={product.imageUrl}
+                      src={product.imageURL}
                       alt={product.name}
                       style={{
                         width: "100%",
@@ -67,7 +67,7 @@ const ProductList = ({ products, onDeleteProduct }) => {
                 //   color="secondary"
                   aria-label="delete"
                   style={{ position: "absolute", bottom: "8px", left: "8px", color :"#FF0000" }}
-                  onClick={() => handleOpenDeleteDialog(product.id)}
+                  onClick={() => handleOpenDeleteDialog(product.productId)}
                 >
                   <DeleteIcon />
                 </IconButton>
